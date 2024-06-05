@@ -20,5 +20,14 @@ const path = require('path');
   await page.goto('http://www.englishexpressonline.com/start-here');
   await page.screenshot({ path: path.join(screenshotsFolder, 'start-here.png'), fullPage: true });
 
+  await page.goto('https://automationteststore.com/');
+  await page.screenshot({ path: path.join(screenshotsFolder, 'LandingPage.png'), fullPage: true });
+
+  await page.goto('https://automationteststore.com/index.php?rt=content/contact');
+  await page.screenshot({ path: path.join(screenshotsFolder, 'contact.png'), fullPage: true });
+
+  await page.goto('https://automationteststore.com/index.php?rt=product/category&path=36');
+  await page.screenshot({ path: path.join(screenshotsFolder, 'makeup.png'), fullPage: true });
+
   await browser.close();
 })();
