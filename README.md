@@ -1,46 +1,46 @@
-# Proyecto de Automatización con Puppeteer
+# Automation Project with Puppeteer
 
-## Descripción
+## Description
 
-Este es un proyecto de automatización web utilizando Puppeteer, una biblioteca de Node.js que proporciona una API de alto nivel para controlar navegadores Chrome o Chromium mediante el protocolo DevTools.
+This is a web automation project using Puppeteer, a Node.js library that provides a high-level API for controlling Chrome or Chromium browsers using the DevTools protocol.
 
-## Características
+## Features
 
-- Automatización de navegadores web
-- Captura de pantallas
-- Generación de PDFs
-- Scraping de contenido web
-- Pruebas automatizadas de interfaz de usuario
-- Navegación programática
+- Web browser automation
+- Screen capture
+- PDF generation
+- Web content scraping
+- Automated user interface testing
+- Programmatic navigation
 
-## Requisitos Previos
+## Prerequisites
 
-- Node.js (versión 16 o superior)
-- npm o yarn
-- Sistema operativo: Windows, macOS, o Linux
+- Node.js (version 16 or higher)
+- npm or yarn
+- Operating system: Windows, macOS, or Linux
 
-## Instalación
+## Installation
 
-### 1. Clonar el repositorio
+### 1. Clone the repository
 
 ```bash
 git clone <url-del-repositorio>
-cd proyecto-puppeteer-automation
+cd puppeteer_tests
 ```
 
-### 2. Instalar dependencias
+### 2. Install dependencies
 
 ```bash
 npm install
 ```
 
-O si prefieres usar yarn:
+Or if you prefer to use yarn:
 
 ```bash
 yarn install
 ```
 
-### 3. Instalar Puppeteer
+### 3. Install Puppeteer
 
 ```bash
 npm install puppeteer
@@ -48,95 +48,95 @@ npm install puppeteer
 
 Puppeteer descargará automáticamente una versión compatible de Chromium durante la instalación.
 
-## Configuración
+## Configuration
 
-### Variables de Entorno
+### Environment Variables
 
-Crea un archivo `.env` en la raíz del proyecto con las siguientes variables:
+Create a file `.env` at the root of the project with the following variables:
 
 ```env
-# Configuración del navegador
+# Browser settings
 HEADLESS=true
 VIEWPORT_WIDTH=1920
 VIEWPORT_HEIGHT=1080
 
-# URLs de prueba
+# Test URLs
 BASE_URL=https://example.com
 
-# Configuración de timeouts (en milisegundos)
+# Timeout settings (in milliseconds)
 DEFAULT_TIMEOUT=30000
 NAVIGATION_TIMEOUT=60000
 ```
 
-### Estructura del Proyecto
+### Project Structure
 
 ```
 proyecto-puppeteer-automation/
 ├── src/
-│   ├── scripts/          # Scripts de automatización
-│   ├── utils/           # Utilidades y helpers
-│   └── config/          # Archivos de configuración
-├── tests/               # Tests automatizados
-├── screenshots/         # Capturas de pantalla generadas
-├── reports/            # Reportes y PDFs generados
-├── .env                # Variables de entorno
+│   ├── scripts/         # Automation scripts
+│   ├── utils/           # Utilities and helpers
+│   └── config/          # Configuration files
+├── tests/               # Automated tests
+├── screenshots/         # Screenshots generated
+├── reports/             # Reports and PDFs generated
+├── .env                 # Environment variables
 ├── package.json
 └── README.md
 ```
 
-## Uso
+## Usage
 
-### Comandos Disponibles
+### Available Commands
 
 ```bash
-# Ejecutar scripts de automatización
+# Run automation scripts
 npm start
 
-# Ejecutar un script específico
+# Run a specific script
 npm run script:nombre-del-script
 
-# Ejecutar tests
+# Run tests
 npm test
 
-# Ejecutar en modo desarrollo (con logs detallados)
+# Run in development mode (with detailed logs)
 npm run dev
 
-# Limpiar archivos generados
+# Clean generated files
 npm run clean
 ```
 
-### Ejemplo Básico
+### Basic Example
 
 ```javascript
 const puppeteer = require('puppeteer');
 
 (async () => {
-  // Lanzar navegador
+  // Launch browser
   const browser = await puppeteer.launch({
-    headless: false, // Cambiar a true para modo sin interfaz
+    headless: false, // Change to true for non-interface mode
     defaultViewport: {
       width: 1920,
       height: 1080
     }
   });
 
-  // Crear nueva página
+  // Create new page
   const page = await browser.newPage();
 
-  // Navegar a una URL
+  // Navigate to a URL
   await page.goto('https://example.com');
 
-  // Tomar captura de pantalla
+  // Take a screenshot
   await page.screenshot({ path: 'screenshots/example.png' });
 
-  // Cerrar navegador
+  // Close browser
   await browser.close();
 })();
 ```
 
-## Scripts de Package.json
+## Package.json scripts
 
-Asegúrate de tener estos scripts en tu `package.json`:
+Be sure you have these scripts in your `package.json`:
 
 ```json
 {
@@ -149,7 +149,7 @@ Asegúrate de tener estos scripts en tu `package.json`:
 }
 ```
 
-## Dependencias Principales
+## Main Departments
 
 ```json
 {
@@ -165,15 +165,15 @@ Asegúrate de tener estos scripts en tu `package.json`:
 }
 ```
 
-## Configuración Avanzada
+## Advanced Settings
 
-### Opciones de Lanzamiento del Navegador
+### Browser Launch Options
 
 ```javascript
 const browser = await puppeteer.launch({
-  headless: true,              // Ejecutar sin interfaz gráfica
-  slowMo: 250,                 // Ralentizar acciones (ms)
-  devtools: false,             // Abrir DevTools
+  headless: true,              // Run without graphical interface
+  slowMo: 250,                 // Slow down actions (ms)
+  devtools: false,             // Open DevTools
   defaultViewport: {
     width: 1920,
     height: 1080
@@ -186,9 +186,9 @@ const browser = await puppeteer.launch({
 });
 ```
 
-### Configuración para Servidores
+### Configuration for Servers
 
-Para ejecutar en servidores Linux sin interfaz gráfica:
+To run on Linux servers without a graphical interface:
 
 ```javascript
 const browser = await puppeteer.launch({
@@ -203,56 +203,56 @@ const browser = await puppeteer.launch({
 });
 ```
 
-## Solución de Problemas
+## Troubleshooting
 
-### Problemas Comunes
+### Common Problems
 
-1. **Error: No se puede encontrar Chromium**
+1. **Error: Chromium cannot be found**
    ```bash
    npm install puppeteer --force
    ```
 
-2. **Problemas de permisos en Linux**
+2. **Permission issues in Linux**
    ```bash
    sudo apt-get install -y libxss1 libgconf-2-4 libxtst6 libxrandr2 libasound2 libpangocairo-1.0-0 libatk1.0-0 libcairo-gobject2 libgtk-3-0 libgdk-pixbuf2.0-0
    ```
 
-3. **Timeouts en navegación**
-   - Aumentar el timeout: `page.setDefaultTimeout(60000)`
-   - Esperar elementos específicos: `await page.waitForSelector('selector')`
+3. **Timeouts in navigation**
+   - Increase timeout: `page.setDefaultTimeout(60000)`
+   - Wait for specific elements: `await page.waitForSelector('selector')`
 
-### Logs y Debugging
+### Logs and Debugging
 
 ```javascript
-// Habilitar logs de Puppeteer
+// Enable Puppeteer logs
 const page = await browser.newPage();
 page.on('console', msg => console.log('PAGE LOG:', msg.text()));
 page.on('pageerror', err => console.log('PAGE ERROR:', err.message));
 ```
 
-## Contribuir
+## Contribute
 
-1. Fork el proyecto
-2. Crea tu rama de features (`git checkout -b feature/nueva-funcionalidad`)
-3. Commit tus cambios (`git commit -am 'Agregar nueva funcionalidad'`)
-4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
-5. Crear un Pull Request
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/nueva-funcionalidad`)
+3. Commit your changes (`git commit -am 'Agregar nueva funcionalidad'`)
+4. Push to branch (`git push origin feature/nueva-funcionalidad`)
+5. Create a Pull Request
 
 ## Licencia
 
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](LICENSE.md) para detalles.
+This project is licensed under the MIT License - see the file [LICENSE.md](LICENSE.md) for details.
 
-## Recursos Adicionales
+## Additional Resources
 
-- [Documentación oficial de Puppeteer](https://pptr.dev/)
+- [Official Puppeteer documentation](https://pptr.dev/)
 - [Puppeteer API Reference](https://pptr.dev/api)
-- [Ejemplos de Puppeteer](https://github.com/puppeteer/puppeteer/tree/main/examples)
-- [Mejores prácticas](https://pptr.dev/guides)
+- [Puppeteer examples](https://github.com/puppeteer/puppeteer/tree/main/examples)
+- [Best practices](https://pptr.dev/guides)
 
-## Autor
+## Author
 
 GitTestingPat
 
-## Estado del Proyecto
+## Project Status
 
-🚧 **En Desarrollo** - Este proyecto está actualmente en desarrollo inicial.
+🚧 **Under Development** - This project is currently in early development.
