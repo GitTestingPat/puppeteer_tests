@@ -238,7 +238,7 @@ page.on('pageerror', err => console.log('PAGE ERROR:', err.message));
 4. Push to branch (`git push origin feature/nueva-funcionalidad`)
 5. Create a Pull Request
 
-## Licencia
+## License
 
 This project is licensed under the MIT License - see the file [LICENSE.md](LICENSE.md) for details.
 
